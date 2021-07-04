@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: 280,
-    height: 45
+    height: 45,
+    color: '#000'
   },
   loginButton: {
     width: 300,
