@@ -1,5 +1,10 @@
 export default [
   {
+    name: 'Model T',
+    tagline: 'Starting at $98,42',
+    image: require('../../../assets/images/ModelT.jpg'),
+  },
+  {
     name: 'Model S',
     tagline: 'Starting at $68,42',
     image: require('../../../assets/images/ModelS.jpeg'),
