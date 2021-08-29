@@ -21,37 +21,48 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '831493023',
+      nama: '',
+      phone: 831493023,
       password: '12345678'
     }
   }
 
-  login = () => {
-    const { phone, password } = this.state
-    if (phone == 831493023 && password == 12345678) {
-      this.props.navigation.replace('Dashboard')
-    } else {
-      alert('Phone dan Password Salah!')
-    }
+  register() {
+    console.log('register')
   }
-
 
   render() {
     return (
+      //Donot dismis Keyboard when click outside of TextInput
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Image style={styles.menu} source={{ uri: 'https://i.ibb.co/1LGxzZq/arrow-1.png' }} />
+          </TouchableOpacity>
+          <Text style={styles.titleHeader}>Address</Text>
+        </View>
           <View style={styles.up}>
-            <Text style={{ color: '#1E82D5', fontSize: 50, fontWeight: 'bold' }}>SIGN IN</Text>
-            <Text style={{ fontSize: 18 }}>Enter your data</Text>
+            <Image style={{ height: 50, width: 50 }} source={{ uri: 'https://i.ibb.co/Twd1kx8/photo-camera.png' }} />
           </View>
           <View style={styles.down}>
+            <View>
+              <Text style={{ color: '#000', fontWeight: 'bold', paddingLeft: 0 }}>Name</Text>
+              <View style={styles.textInputContainer}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Ex: Taylor eyemen"
+                  onChangeText={(nama) => this.setState({ nama })}
+                >
+                </TextInput>
+              </View>
+            </View>
             <View>
               <Text style={{ color: '#000', fontWeight: 'bold', paddingLeft: 0 }}>Phone</Text>
               <View style={styles.textInputContainer}>
                 <TextInput
                   style={styles.textInput}
-                  value={this.state.phone}
-                  placeholder="Enter your phone"
+                  placeholder="Ex: 8392382932"
                   onChangeText={(phone) => this.setState({ phone })}
                 >
                 </TextInput>
@@ -62,39 +73,23 @@ export default class Login extends Component {
               <View style={styles.textInputContainer1}>
                 <TextInput
                   style={styles.textInput}
-                  value={this.state.password}
                   placeholder="Enter your password"
                   secureTextEntry={true}
                   onChangeText={(password) => this.setState({ password })}
                 >
                 </TextInput>
               </View>
-              <Text style={{ color: '#1E82D5', fontWeight: 'bold', marginBottom: 20, marginTop: 20, textAlign: 'right' }}>Forgot Password?</Text>
-            </View>
-            <View>
-
-              <TouchableOpacity style={styles.loginButton} onPress={() => this.login()}>
-                <Text style={styles.loginButtonTitle}>LOGIN</Text>
-              </TouchableOpacity>
-              <View style={{ height: 100, marginTop: 40 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                  <Text>OR</Text>
-                </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderRadius: 15, padding: 5 }}>
-                    <Image style={{ height: 18, width: 18, resizeMode: 'contain', marginRight: 5 }} source={{ uri: 'https://i.ibb.co/Ctc1WG2/facebook.png' }} />
-                    <Text>Facebook</Text>
-                  </View>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderRadius: 15, padding: 5, paddingRight: 20 }}>
-                    <Image style={{ height: 18, width: 18, resizeMode: 'contain', marginRight: 5 }} source={{ uri: 'https://i.ibb.co/jypvnwF/google.png' }} />
-                    <Text>Google</Text>
-                  </View>
-                </View>
-                <View style={{ alignItems: 'center', width: '100%', marginTop: 50}}>
-                  <Text>New here ? <TouchableOpacity onPress={() =>  this.props.navigation.navigate('Register')} style={{ alignItems: 'center', borderBottomWidth: 1 }}><Text style={{ color: '#1E82D5', fontWeight: 'bold' }}>Sign Up</Text></TouchableOpacity></Text>
-                </View>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image style={{ height: 20, width: 20, marginRight: 5 }} source={{ uri: 'https://i.ibb.co/J518RGB/checked-box-1.png' }} />
+                <Text style={{ fontWeight: 'bold', marginBottom: 20, marginTop: 20, textAlign: 'left' }}>I aggree <Text style={{ color: '#1E82D5', }}>Terms & Condition</Text> </Text>
               </View>
             </View>
+            <View>
+              <TouchableOpacity style={styles.loginButton} onPress={() => this.register()}>
+                <Text style={styles.loginButtonTitle}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={{ fontWeight: 'bold', marginBottom: 20, marginTop: 20, textAlign: 'left' }}>I have <Text onPress={() => this.props.navigation.goBack()} style={{ color: '#1E82D5', }}>an account</Text></Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -174,5 +169,23 @@ const styles = StyleSheet.create({
     width: 298,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
+  header: {
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center'
+},
+menu: {
+    width: 25,
+    height: 25,
+    resizeMode: 'contain',
+    marginLeft: 10,
+    marginRight: 6
+},
+titleHeader: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: "#000"
+},
 })

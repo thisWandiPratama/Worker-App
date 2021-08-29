@@ -8,10 +8,6 @@ const DrawerContent = (props) => {
                     <Image source={{ uri: 'https://i.ibb.co/vHZxrV2/home.png' }} style={styles.icon} />
                     <Text style={{marginLeft: 10}}>Home</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => props.navigation.navigate('About_us')} style={{ margin: 10, flexDirection: 'row' , alignItems:'center'}}>
-                    <Image source={{ uri: 'https://i.ibb.co/DYZCTyK/user.png' }} style={styles.icon} />
-                    <Text style={{marginLeft: 10}}>About US</Text>
-                </TouchableOpacity>
         </View>
     )
 }
